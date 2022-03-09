@@ -1,0 +1,53 @@
+ext {
+    daggerVersion = '2.29.1'
+    retrofitVersion = '2.6.1'
+    loggingInterceptor = '4.9.0'
+    gson = '2.8.6'
+    okhttp = '4.9.0'
+    retrofitRxAdapter = "2.9.0"
+    rxJava = "2.2.20"
+    rxAndroid = "2.1.1"
+    rxKotlin = "2.4.0"
+    navVersion = '2.3.1'
+    constraintVersion = '2.0.4'
+    spinKitVersion = '1.4.0'
+    glideVersion = '4.11.0'
+
+    //ConstraintLayout
+    constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintVersion"
+
+    //Hilt
+    dagger = "com.google.dagger:dagger:$daggerVersion"
+    daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
+    daggerAnnotaionProcessor = "com.google.dagger:dagger-android-processor:$daggerVersion"
+
+    //Rx
+    rxJava = "io.reactivex.rxjava2:rxjava:$rxJava"
+    rxAndroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid"
+    rxKotlin = "io.reactivex.rxjava2:rxkotlin:$rxKotlin"
+
+    //Retrofit2
+    retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    rxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    //LoggingInterceptor
+    loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$loggingInterceptor"
+
+    //Gson
+    gson = "com.google.code.gson:gson:$gson"
+
+    //OkHttp
+    okhttp = "com.squareup.okhttp3:okhttp:$okhttp"
+
+    //Navigation
+    navFragment = "androidx.navigation:navigation-fragment-ktx:$navVersion"
+    navUi = "androidx.navigation:navigation-ui-ktx:$navVersion"
+
+    //SpinKit
+    spinKit = "com.github.ybq:Android-SpinKit:$spinKitVersion"
+
+    //Glide
+    glide = "com.github.bumptech.glide:glide:$glideVersion"
+    glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
+}

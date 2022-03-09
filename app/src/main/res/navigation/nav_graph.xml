@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="ru.alexnimas.ryanairtesttask.ui.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/mainToStations"
+            app:destination="@id/stationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stationsFragment"
+        android:name="ru.alexnimas.ryanairtesttask.ui.stations.StationsFragment"
+        android:label="StationsFragment"
+        tools:layout="@layout/fragment_stations" >
+        <action
+            android:id="@+id/action_stationsFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:launchSingleTop="true" />
+        <argument
+            android:name="StationType"
+            app:argType="ru.alexnimas.ryanairtesttask.ui.main.StationType" />
+    </fragment>
+</navigation>
