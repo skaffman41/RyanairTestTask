@@ -2,9 +2,7 @@ package ru.alexnimas.ryanairtesttask.ui.main
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.DatePicker
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -12,6 +10,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.alexnimas.ryanairtesttask.R
 import ru.alexnimas.ryanairtesttask.databinding.FragmentMainBinding
+import ru.alexnimas.ryanairtesttask.domain.request.FlightsRequest
 import java.util.*
 
 @AndroidEntryPoint
@@ -30,6 +29,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         viewModel.to.observe(viewLifecycleOwner) { binding.to.text = it }
         viewModel.flyOut.observe(viewLifecycleOwner) { binding.flyOut.text = it }
         viewModel.passengers.observe(viewLifecycleOwner) { binding.passengers.text = it }
+        viewModel.showFlights.observe(viewLifecycleOwner) { navigateToFlights(it) }
+    }
+
+    private fun navigateToFlights(flightsRequest: FlightsRequest) {
+        findNavController().navigate(MainFragmentDirections.mainToFlights(flightsRequest))
     }
 
     private fun setListeners() {
@@ -46,11 +50,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
 
         binding.passengers.setOnClickListener {
-
+            findNavController().navigate(MainFragmentDirections.mainToPassengers())
         }
 
         binding.search.setOnClickListener {
-
+            viewModel.goToFlights()
         }
     }
 
@@ -61,7 +65,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         val day = c.get(Calendar.DAY_OF_MONTH)
         DatePickerDialog(
             requireContext(),
-            { _, year, month, day -> viewModel.updateFlyOut(year, month + 1, day)},
+            { _, y, m, d -> viewModel.updateFlyOut(y, m + 1, d) },
             year,
             month,
             day

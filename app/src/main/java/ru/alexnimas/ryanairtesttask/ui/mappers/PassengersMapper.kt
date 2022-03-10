@@ -1,4 +1,4 @@
-package ru.alexnimas.ryanairtesttask.ui.main.mappers
+package ru.alexnimas.ryanairtesttask.ui.mappers
 
 import ru.alexnimas.ryanairtesttask.domain.model.Passengers
 import javax.inject.Inject

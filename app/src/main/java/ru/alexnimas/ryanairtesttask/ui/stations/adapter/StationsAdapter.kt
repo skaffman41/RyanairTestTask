@@ -5,23 +5,42 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.alexnimas.ryanairtesttask.databinding.ItemCountryBinding
 import ru.alexnimas.ryanairtesttask.databinding.ItemStationBinding
-import ru.alexnimas.ryanairtesttask.domain.model.Station
+import ru.alexnimas.ryanairtesttask.ui.model.Country
+import ru.alexnimas.ryanairtesttask.ui.model.IStation
+import ru.alexnimas.ryanairtesttask.ui.model.Station
 
 class StationsAdapter(
-    diffCallback: DiffUtil.ItemCallback<Station>,
+    diffCallback: DiffUtil.ItemCallback<IStation>,
     private val onItemClick: (station: Station) -> Unit
-) : ListAdapter<Station, StationsAdapter.StationHolder>(diffCallback) {
+) : ListAdapter<IStation, RecyclerView.ViewHolder>(diffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StationHolder {
-        val binding = ItemStationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
-        return StationHolder(binding, onItemClick)
+    override fun getItemViewType(position: Int): Int {
+        val item = getItem(position)
+        return if (item is Station) 1 else 2
     }
 
-    override fun onBindViewHolder(holder: StationHolder, position: Int) {
-        val station = getItem(position)
-        holder.bind(station)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val stationBinding =
+            ItemStationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val countryBinding =
+            ItemCountryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        return if (viewType == 1) {
+            StationHolder(stationBinding, onItemClick)
+        } else {
+            CountryHolder(countryBinding)
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val item = getItem(position)
+        if (item is Station) {
+            (holder as StationHolder).bind(item)
+        } else if (item is Country) {
+            (holder as CountryHolder).bind(item)
+        }
     }
 
     class StationHolder(
@@ -33,6 +52,14 @@ class StationsAdapter(
             binding.stationCountry.text = station.countryName
             binding.stationCode.text = station.code
             binding.root.setOnClickListener { onItemClick.invoke(station) }
+        }
+    }
+
+    class CountryHolder(
+        private val binding: ItemCountryBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(country: Country) {
+            binding.country.text = country.name
         }
     }
 }

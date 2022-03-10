@@ -1,5 +1,6 @@
 package ru.alexnimas.ryanairtesttask.data.response
 
+
 data class FlightsResponse(
     val currPrecision: Int,
     val currency: String,
@@ -22,9 +23,9 @@ data class FlightsResponse(
     ) {
         data class Date(
             val dateOut: String,
-            val flights: List<FlightDto>
+            val flights: List<Flight>
         ) {
-            data class FlightDto(
+            data class Flight(
                 val duration: String,
                 val faresLeft: Int,
                 val flightKey: String,
@@ -42,14 +43,14 @@ data class FlightsResponse(
                     val fares: List<Fare>
                 ) {
                     data class Fare(
-                        val amount: Int,
+                        val amount: Double,
                         val count: Int,
-                        val discountAmount: Int,
+                        val discountAmount: Double,
                         val discountInPercent: Int,
                         val hasBogof: Boolean,
                         val hasDiscount: Boolean,
                         val hasPromoDiscount: Boolean,
-                        val publishedFare: Int,
+                        val publishedFare: Double,
                         val type: String
                     )
                 }

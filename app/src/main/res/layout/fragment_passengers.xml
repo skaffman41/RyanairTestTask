@@ -12,58 +12,13 @@
         android:layout_margin="4dp"
         android:elevation="4dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/stations"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/from"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:hint="From"
-                android:padding="16dp"
-                app:layout_constraintBottom_toTopOf="@id/to"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="#33000000"
-                app:layout_constraintBottom_toTopOf="@id/to"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/from" />
-
-            <TextView
-                android:id="@+id/to"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:hint="To"
-                android:padding="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/from" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:elevation="4dp">
-
-        <TextView
-            android:id="@+id/fly_out"
+        <EditText
+            android:id="@+id/adult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
-            android:hint="Fly Out"
+            android:hint="Adult"
+            android:inputType="number"
             android:padding="16dp"
             app:layout_constraintBottom_toTopOf="@id/to"
             app:layout_constraintTop_toTopOf="parent" />
@@ -76,12 +31,51 @@
         android:layout_margin="4dp"
         android:elevation="4dp">
 
-        <TextView
-            android:id="@+id/passengers"
+        <EditText
+            android:id="@+id/children"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
-            android:hint="Passengers"
+            android:hint="Child"
+            android:inputType="number"
+            android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@id/to"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:elevation="4dp">
+
+        <EditText
+            android:id="@+id/teen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:hint="Teen"
+            android:inputType="number"
+            android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@id/to"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:elevation="4dp">
+
+        <EditText
+            android:id="@+id/infant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:hint="Infant"
+            android:inputType="number"
             android:padding="16dp"
             app:layout_constraintBottom_toTopOf="@id/to"
             app:layout_constraintTop_toTopOf="parent" />
@@ -89,11 +83,11 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/search"
+        android:id="@+id/apply"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Let's go"
+        android:text="Apply"
         android:textAllCaps="false" />
 
 </LinearLayout>

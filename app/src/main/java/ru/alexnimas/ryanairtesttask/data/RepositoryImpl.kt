@@ -6,10 +6,10 @@ import ru.alexnimas.ryanairtesttask.data.api.FlightsApi
 import ru.alexnimas.ryanairtesttask.data.api.StationsApi
 import ru.alexnimas.ryanairtesttask.data.mappers.FlightDtoMapper
 import ru.alexnimas.ryanairtesttask.data.mappers.StationDtoMapper
-import ru.alexnimas.ryanairtesttask.data.response.FlightsResponse
 import ru.alexnimas.ryanairtesttask.domain.Repository
-import ru.alexnimas.ryanairtesttask.domain.model.Flight
-import ru.alexnimas.ryanairtesttask.domain.model.Station
+import ru.alexnimas.ryanairtesttask.domain.model.DomainFlight
+import ru.alexnimas.ryanairtesttask.domain.model.DomainStation
+import ru.alexnimas.ryanairtesttask.domain.request.FlightsRequest
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(
@@ -18,7 +18,7 @@ class RepositoryImpl @Inject constructor(
     private val stationDtoMapper: StationDtoMapper,
     private val flightDtoMapper: FlightDtoMapper
 ) : Repository {
-    override fun getStations(): Single<List<Station>> {
+    override fun getStations(): Single<List<DomainStation>> {
         return stationsApi.getStations()
             .subscribeOn(Schedulers.io())
             .map { response ->
@@ -26,23 +26,15 @@ class RepositoryImpl @Inject constructor(
             }
     }
 
-    override fun getFlights(
-        dateout: String,
-        origin: String,
-        destination: String,
-        adt: Int,
-        chd: Int,
-        teen: Int,
-        inf: Int,
-    ): Single<List<Flight>> {
+    override fun getFlights(flightsRequest: FlightsRequest): Single<List<DomainFlight>> {
         return flightsApi.getFlights(
-            dateout = dateout,
-            origin = origin,
-            destination = destination,
-            adt = 1,
-            chd = chd,
-            teen = teen,
-            inf = inf,
+            dateout = flightsRequest.dateout,
+            origin = flightsRequest.origin,
+            destination = flightsRequest.destination,
+            adt = flightsRequest.adt,
+            chd = flightsRequest.chd,
+            teen = flightsRequest.teen,
+            inf = flightsRequest.inf,
             ToUs = "AGREED"
         )
             .subscribeOn(Schedulers.io())

@@ -1,8 +1,8 @@
 package ru.alexnimas.ryanairtesttask.domain.model
 
 data class FlightSearchModel(
-    val from: Station? = null,
-    val to: Station? = null,
+    val from: DomainStation? = null,
+    val to: DomainStation? = null,
     val flyOut: String? = null,
     val passengers: Passengers = Passengers()
 )

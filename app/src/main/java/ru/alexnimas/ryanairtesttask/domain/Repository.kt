@@ -2,21 +2,13 @@ package ru.alexnimas.ryanairtesttask.domain
 
 import dagger.hilt.android.scopes.ViewModelScoped
 import io.reactivex.Single
-import ru.alexnimas.ryanairtesttask.data.response.FlightsResponse
-import ru.alexnimas.ryanairtesttask.domain.model.Flight
-import ru.alexnimas.ryanairtesttask.domain.model.Station
+import ru.alexnimas.ryanairtesttask.domain.model.DomainFlight
+import ru.alexnimas.ryanairtesttask.domain.model.DomainStation
+import ru.alexnimas.ryanairtesttask.domain.request.FlightsRequest
 
 @ViewModelScoped
 interface Repository {
-    fun getStations(): Single<List<Station>>
+    fun getStations(): Single<List<DomainStation>>
 
-    fun getFlights(
-        dateout: String,
-        origin: String,
-        destination: String,
-        adt: Int,
-        chd: Int,
-        teen: Int,
-        inf: Int,
-    ): Single<List<Flight>>
+    fun getFlights(flightsRequest: FlightsRequest): Single<List<DomainFlight>>
 }

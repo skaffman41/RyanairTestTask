@@ -13,18 +13,46 @@
         <action
             android:id="@+id/mainToStations"
             app:destination="@id/stationsFragment" />
+        <action
+            android:id="@+id/mainToFlights"
+            app:destination="@id/flightsFragment" />
+        <action
+            android:id="@+id/mainToPassengers"
+            app:destination="@id/passengersFragment" />
     </fragment>
     <fragment
         android:id="@+id/stationsFragment"
         android:name="ru.alexnimas.ryanairtesttask.ui.stations.StationsFragment"
         android:label="StationsFragment"
-        tools:layout="@layout/fragment_stations" >
-        <action
-            android:id="@+id/action_stationsFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:launchSingleTop="true" />
+        tools:layout="@layout/fragment_stations">
         <argument
-            android:name="StationType"
+            android:name="stationType"
             app:argType="ru.alexnimas.ryanairtesttask.ui.main.StationType" />
+    </fragment>
+    <fragment
+        android:id="@+id/flightsFragment"
+        android:name="ru.alexnimas.ryanairtesttask.ui.flights.FlightsFragment"
+        android:label="FlightsFragment"
+        tools:layout="@layout/fragment_flights">
+        <argument
+            android:name="flightRequest"
+            app:argType="ru.alexnimas.ryanairtesttask.domain.request.FlightsRequest" />
+        <action
+            android:id="@+id/flightsToDetails"
+            app:destination="@id/flightDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passengersFragment"
+        android:name="ru.alexnimas.ryanairtesttask.ui.passengers.PassengersFragment"
+        android:label="PassengersFragment"
+        tools:layout="@layout/fragment_passengers" />
+    <fragment
+        android:id="@+id/flightDetailsFragment"
+        android:name="ru.alexnimas.ryanairtesttask.ui.flight_details.FlightDetailsFragment"
+        android:label="FlightDetailsFragment"
+        tools:layout="@layout/fragment_flight_details" >
+        <argument
+            android:name="flight"
+            app:argType="ru.alexnimas.ryanairtesttask.domain.model.DomainFlight" />
     </fragment>
 </navigation>
